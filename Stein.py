@@ -44,6 +44,8 @@ class Stein(GCD):
         if (p > q): return self.bitops((p - q) >> 1, q)
         return self.bitops(q, (q - p) >> 1)
 
+    #TODO: look into why bitwise is slower, implement iterative versions
+
 
 
         
