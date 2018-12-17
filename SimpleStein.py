@@ -2,7 +2,7 @@ from GCD import GCD
 
 class SimpleStein(GCD):
     def __init__(self):
-        return
+        super(SimpleStein, self).__init__("Simple Recursive Stein")
     
     # note: both recursive methods do not work on very large numbers because of the recursion limit. When this is changed, for some reason nothing happens.
     def compute(self, p, q, debug = False):

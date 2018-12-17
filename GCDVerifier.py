@@ -10,10 +10,10 @@ class GCDVerifier(Verifier):
         if (len(values) != 2): raise Exception("Wrong data format in GCD Verifier")
         
         #divide both by GCD, if gcd result of those two is not 1 there is another common factor wich means the gcd is not the greatest common divisor
-        if not (Stein.bitops(values[0] // result, value[1] // result) == 1):
+        if not (self.GCD.compute(values[0] // result, values[1] // result) == 1):
             print("p / gcd: " + str(values[0] // result))
             print("q / gcd: " + str(values[1] // result))
-            print("gcd of those two: " + str(Stein.bitops(values[0] // result, values[1] // result)))
+            print("gcd of those two: " + str(self.GCD.compute(values[0] // result, values[1] // result)))
             print()
             self.GCD.compute(values[0], values[1], True)
             raise Exception("GCD is not equal to the bitops stein test")

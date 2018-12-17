@@ -2,7 +2,7 @@ from GCD import GCD
 
 class IterativeStein(GCD):
     def __init__(self):
-        return
+        super(IterativeStein, self).__init__("Iterative Stein")
     
     def compute(self, p, q, debug = False):
         shift = 0

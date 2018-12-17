@@ -11,10 +11,14 @@ from Verifier import Verifier
 from GCDVerifier import GCDVerifier
 from BezoutVerifier import BezoutVerifier
 
-ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 10)
+ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
+IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 
 for _ in range(10):
     ExtEuclidTest.perform()
+
+for _ in range(10):
+    IterativeSteinTest.perform()
 
 # below a small test to test multiplication, division and bitoperator speeds
 """

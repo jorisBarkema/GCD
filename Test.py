@@ -25,8 +25,9 @@ class Test:
 
         end_time = time.time()
 
+        # time the method took in milliseconds
         self.time = (end_time - begin_time) * 1000
-        print(self.time)
+        print(self.GCD.name + ": " + str(self.time) + " ms")
 
         self.verify()
     

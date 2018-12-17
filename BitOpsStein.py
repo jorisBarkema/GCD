@@ -2,7 +2,7 @@ from GCD import GCD
 
 class BitOpsStein(GCD):
     def __init__(self):
-        return
+        super(BitOpsStein, self).__init__("Bitwise operators Recursive Stein")
     
     # note: both recursive methods do not work on very large numbers because of the recursion limit. When this is changed, for some reason nothing happens.
     #TODO: look into why bitwise is slower, implement iterative versions self.simple(q, (q - p) // 2)

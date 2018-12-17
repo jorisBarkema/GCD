@@ -2,7 +2,7 @@ from GCD import GCD
 
 class ExtEuclid(GCD):
     def __init__(self):
-        return
+        super(ExtEuclid, self).__init__("Extended Euclid")
     
     def compute(self, p, q, debug = False):
         # Used https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm as reference
