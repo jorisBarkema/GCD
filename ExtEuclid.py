@@ -4,7 +4,7 @@ class ExtEuclid(GCD):
     def __init__(self):
         return
     
-    def standard(self, p, q, debug = False):
+    def compute(self, p, q, debug = False):
         # Used https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm as reference
 
         old_r = p

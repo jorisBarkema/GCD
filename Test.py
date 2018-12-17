@@ -1,4 +1,4 @@
-class GCD:
+class Test:
     def __init__(self):
         raise("Trying to initiate abstract superclass")
 
