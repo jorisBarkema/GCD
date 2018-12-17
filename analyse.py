@@ -1,32 +1,20 @@
 from GCD import GCD
+
 from ExtEuclid import ExtEuclid
-from Stein import Stein
-import time
-import random
+from SimpleStein import SimpleStein
+from BitOpsStein import BitOpsStein
+from IterativeStein import IterativeStein
 
-Euclid = ExtEuclid()
-Stein = Stein()
+from Test import Test
 
-numtests = 10
-testsize = 100
+from Verifier import Verifier
+from GCDVerifier import GCDVerifier
+from BezoutVerifier import BezoutVerifier
 
-for _ in range(numtests):
-    values = []
-    results = []
+ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 10)
 
-    for _ in range(testsize):
-        randoms = (random.randrange(1, 2 ** 2048), random.randrange(1, 2 ** 2048))
-        values.append(randoms)
-
-    begin_time = time.time()
-
-    for i in range(testsize):
-        results.append(Euclid.compute(values[i][0], values[i][1]))
-        #results.append(Stein.iterative(values[i][0], values[i][1]))
-
-    end_time = time.time()
-
-    print("duration (ms): " + str((end_time - begin_time) * 1000))
+for _ in range(10):
+    ExtEuclidTest.perform()
 
 # below a small test to test multiplication, division and bitoperator speeds
 """

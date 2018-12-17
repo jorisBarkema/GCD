@@ -1,8 +1,6 @@
 class Verifier:
-    def __init__(self, values, results, GCD):
-        self.values = values
-        self.results = results
+    def __init__(self, GCD):
         self.GCD = GCD
 
-    def verify(self):
+    def verify(self, values, result):
         raise("Trying to use abstract superclass")
