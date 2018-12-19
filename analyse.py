@@ -1,5 +1,6 @@
 from GCD import GCD
 
+from Euclid import Euclid
 from ExtEuclid import ExtEuclid
 from SimpleStein import SimpleStein
 from BitOpsStein import BitOpsStein
@@ -11,15 +12,19 @@ from Verifier import Verifier
 from GCDVerifier import GCDVerifier
 from BezoutVerifier import BezoutVerifier
 
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
 ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 
+#todo make a TestSet class, so it can perform the test x times with new random values easily
 for _ in range(10):
     ExtEuclidTest.perform()
 
 for _ in range(10):
     IterativeSteinTest.perform()
 
+for _ in range(10):
+    EuclidTest.perform()
 # below a small test to test multiplication, division and bitoperator speeds
 """
 values = []
