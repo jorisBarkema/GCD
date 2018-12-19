@@ -16,7 +16,6 @@ EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
 ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 
-#todo make a TestSet class, so it can perform the test x times with new random values easily
 for _ in range(10):
     ExtEuclidTest.perform()
 

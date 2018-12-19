@@ -16,6 +16,7 @@ class ExtEuclid(GCD):
         old_t = 0
         new_t = 1
 
+        #TODO: better debug info, for small numbers this is great but not when there are 1000+ iterations
         if debug:
             i = 0
             print("iteration: " + str(i))

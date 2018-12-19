@@ -7,15 +7,11 @@ class Test:
         self.verifier = verifier
         self.size = size
         self.values = []
-
-        for _ in range(size):
-            randoms = (random.randrange(1, 2 ** 2048), random.randrange(1, 2 ** 2048))
-            self.values.append(randoms)
-        
+        self.newvalues()
         self.results = []
         self.time = -1
 
-    def perform(self):
+    def perform(self, newvalues = True):
         begin_time = time.time()
 
         for i in range(self.size):
@@ -30,6 +26,14 @@ class Test:
         print(self.GCD.name + ": " + str(self.time) + " ms")
 
         self.verify()
+        if (newvalues): self.newvalues()
+    
+    def newvalues(self):
+        self.values = []
+        self.results = []
+        for _ in range(self.size):
+            randoms = (random.randrange(1, 2 ** 2048), random.randrange(1, 2 ** 2048))
+            self.values.append(randoms)
     
     def verify(self):
         for i in range(len(self.values)):
