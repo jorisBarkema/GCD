@@ -10,6 +10,9 @@ namespace GCD
     {
         static void Main(string[] args)
         {
+            Test test = new Test(null, null, 10);
+
+            Console.ReadLine();
         }
     }
 }
