@@ -16,11 +16,11 @@ EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
 ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 
-for _ in range(10):
-    ExtEuclidTest.perform()
+#for _ in range(10):
+#    ExtEuclidTest.perform()
 
-for _ in range(10):
-    IterativeSteinTest.perform()
+#for _ in range(10):
+#    IterativeSteinTest.perform()
 
 for _ in range(10):
     EuclidTest.perform()

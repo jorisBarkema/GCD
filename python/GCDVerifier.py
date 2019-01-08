@@ -16,4 +16,4 @@ class GCDVerifier(Verifier):
             print("gcd of those two: " + str(self.GCD.compute(values[0] // result, values[1] // result)))
             print()
             self.GCD.compute(values[0], values[1], True)
-            raise Exception("GCD is not equal to the bitops stein test")
+            raise Exception("GCD is not equal to the GCD test")
