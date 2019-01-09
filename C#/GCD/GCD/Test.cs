@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
@@ -15,7 +16,6 @@ namespace GCD
         private int size;
         private BigInteger[][] values;
         private BigInteger[] results;
-        private double time = -1;
 
         public Test(GCD gcd, Verifier verifier, int size)
         {
@@ -24,6 +24,25 @@ namespace GCD
             this.size = size;
 
             this.NewValues();
+        }
+
+        public void Perform(bool newvalues = true, bool debug = false)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            for (int i = 0; i < this.size; i++)
+            {
+                this.results[i] = this.GCD.compute(this.values[i][0], this.values[i][1], debug);
+            }
+
+            stopwatch.Stop();
+
+            long elapsedTime = stopwatch.ElapsedMilliseconds;
+            Console.WriteLine(this.GCD.Name + ": " + elapsedTime + " ms");
+
+            this.Verify();
+            if (newvalues) this.NewValues();
         }
 
         private void NewValues()
@@ -50,70 +69,10 @@ namespace GCD
 
         private void Verify()
         {
-            for(int i = 0; i <  this.values.Length; i++)
+            for (int i = 0; i < this.values.Length; i++)
             {
                 this.Verifier.verify(this.values[i][0], this.values[i][1], this.results[i]);
             }
         }
-        /*
-        public static BigInteger RandomInRange(BigInteger min, BigInteger max)
-        {
-            if (min > max)
-            {
-                var buff = min;
-                min = max;
-                max = buff;
-            }
-
-            // offset to set min = 0
-            BigInteger offset = -min;
-            min = 0;
-            max += offset;
-
-            var value = randomInRangeFromZeroToPositive(max) - offset;
-            return value;
-        }
-
-        private static BigInteger randomInRangeFromZeroToPositive(BigInteger max)
-        {
-            RandomNumberGenerator rng = RandomNumberGenerator.Create();
-
-            BigInteger value;
-            var bytes = max.ToByteArray();
-
-            // count how many bits of the most significant byte are 0
-            // NOTE: sign bit is always 0 because `max` must always be positive
-            byte zeroBitsMask = 0b00000000;
-
-            var mostSignificantByte = bytes[bytes.Length - 1];
-
-            // we try to set to 0 as many bits as there are in the most significant byte, starting from the left (most significant bits first)
-            // NOTE: `i` starts from 7 because the sign bit is always 0
-            for (var i = 7; i >= 0; i--)
-            {
-                // we keep iterating until we find the most significant non-0 bit
-                if ((mostSignificantByte & (0b1 << i)) != 0)
-                {
-                    var zeroBits = 7 - i;
-                    zeroBitsMask = (byte)(0b11111111 >> zeroBits);
-                    break;
-                }
-            }
-
-            do
-            {
-                rng.GetBytes(bytes);
-
-                // set most significant bits to 0 (because `value > max` if any of these bits is 1)
-                bytes[bytes.Length - 1] &= zeroBitsMask;
-
-                value = new BigInteger(bytes);
-
-                // `value > max` 50% of the times, in which case the fastest way to keep the distribution uniform is to try again
-            } while (value > max);
-
-            return value;
-        }
-        */
     }
 }

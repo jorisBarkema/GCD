@@ -9,14 +9,14 @@ namespace GCD
 {
     class Euclid : GCD
     {
-        public Euclid(string name)
+        public Euclid()
         {
-            this.Name = name;
+            this.Name = "Simple Euclid";
         }
 
         public override BigInteger compute(BigInteger p, BigInteger q, bool debug = false)
         {
-            while(p != q)
+            while (p != q)
             {
                 if (p == 0) return q;
                 if (q == 0) return p;

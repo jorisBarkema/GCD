@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Euclid.cs" />
+    <Compile Include="ExtEuclid.cs" />
     <Compile Include="GCD.cs" />
     <Compile Include="GCDVerifier.cs" />
     <Compile Include="Program.cs" />

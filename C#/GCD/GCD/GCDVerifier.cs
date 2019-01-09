@@ -16,6 +16,12 @@ namespace GCD
 
         public override void verify(BigInteger p, BigInteger q, BigInteger r)
         {
+            if (r == 0)
+            {
+                Console.WriteLine("Result is 0.");
+                return;
+            }
+
             BigInteger vres = this.GCD.compute(p / r, q / r);
             if (vres != 1)
             {
