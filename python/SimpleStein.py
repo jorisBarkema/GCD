@@ -14,13 +14,13 @@ class SimpleStein(GCD):
         
         if (p % 2 == 0):
             #p and q even
-            if (q % 2 == 0): return self.simple(p // 2, q // 2) * 2
+            if (q % 2 == 0): return self.compute(p // 2, q // 2) * 2
             #p even, q odd
-            else: return self.simple(p // 2, q)
+            else: return self.compute(p // 2, q)
         
         #p odd, q even
-        if (q % 2 == 0): return self.simple(p, q // 2)
+        if (q % 2 == 0): return self.compute(p, q // 2)
         
         #both odd
-        if (p > q): return self.simple((p - q) // 2, q)
-        return self.simple(q, (q - p) // 2)
+        if (p > q): return self.compute((p - q) // 2, q)
+        return self.compute(q, (q - p) // 2)

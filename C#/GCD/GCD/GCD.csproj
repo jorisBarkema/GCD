@@ -48,8 +48,10 @@
     <Compile Include="ExtEuclid.cs" />
     <Compile Include="GCD.cs" />
     <Compile Include="GCDVerifier.cs" />
+    <Compile Include="IterativeStein.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecursiveStein.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Verifier.cs" />
   </ItemGroup>
