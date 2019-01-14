@@ -13,8 +13,8 @@ namespace GCD
         {
             this.Name = "Extended Euclid";
         }
-
-        public override BigInteger compute(BigInteger p, BigInteger q, bool debug = false)
+        
+        public override BigInteger[] compute(BigInteger p, BigInteger q, bool debug = false)
         {
             BigInteger oldR = p, newR = q,
                        oldS = 1, newS = 0,
@@ -38,7 +38,7 @@ namespace GCD
             }
 
             // Bezout coefficients oldS and oldT
-            return oldR;
+            return new BigInteger[] { oldR, oldS, oldT } ;
         }
     }
 }

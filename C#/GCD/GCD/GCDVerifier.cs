@@ -14,7 +14,12 @@ namespace GCD
             this.GCD = gcd;
         }
 
-        public override void verify(BigInteger p, BigInteger q, BigInteger r)
+        public void verify(BigInteger p, BigInteger q, BigInteger r)
+        {
+            verify(p, q, r, new BigInteger(0), new BigInteger(0));
+        }
+
+        public override void verify(BigInteger p, BigInteger q, BigInteger r, BigInteger s, BigInteger t)
         {
             if (r == 0)
             {
@@ -22,11 +27,12 @@ namespace GCD
                 return;
             }
 
-            BigInteger vres = this.GCD.compute(p / r, q / r);
+            BigInteger vres = this.GCD.compute(p / r, q / r)[0];
             if (vres != 1)
             {
                 Console.WriteLine("Result               : " + r);
                 Console.WriteLine("Result of p/r and q/r: " + vres);
+                throw new Exception("Wrong result from the GCDVerifier");
             }
         }
     }

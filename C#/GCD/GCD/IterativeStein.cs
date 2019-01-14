@@ -14,12 +14,12 @@ namespace GCD
             this.Name = "Iterative Stein";
         }
 
-        public override BigInteger compute(BigInteger p, BigInteger q, bool debug = false)
+        public override BigInteger[] compute(BigInteger p, BigInteger q, bool debug = false)
         {
             int shift = 0;
 
-            if (p == 0) return q;
-            if (q == 0) return p;
+            if (p == 0) return new BigInteger[] { q };
+            if (q == 0) return new BigInteger[] { p };
 
             while(((p | q) & 1) == 0)
             {
@@ -50,7 +50,7 @@ namespace GCD
                 q = (q - p) >> 1;
             }
 
-            return p << shift;
+            return new BigInteger[] { p << shift };
         }
     }
 }

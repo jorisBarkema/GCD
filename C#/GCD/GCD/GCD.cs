@@ -11,6 +11,6 @@ namespace GCD
     {
         public string Name { get; protected set; }
 
-        public abstract BigInteger compute(BigInteger p, BigInteger q, bool debug = false);
+        public abstract BigInteger[] compute(BigInteger p, BigInteger q, bool debug = false);
     }
 }

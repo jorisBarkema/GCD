@@ -15,7 +15,7 @@ namespace GCD
         private Verifier Verifier;
         private int size;
         private BigInteger[][] values;
-        private BigInteger[] results;
+        private BigInteger[][] results;
 
         public Test(GCD gcd, Verifier verifier, int size)
         {
@@ -48,7 +48,7 @@ namespace GCD
         private void NewValues()
         {
             // set the results to 0
-            this.results = new BigInteger[this.size];
+            this.results = new BigInteger[this.size][];
             this.values = new BigInteger[this.size][];
 
             Random random = new Random();
@@ -71,7 +71,8 @@ namespace GCD
         {
             for (int i = 0; i < this.values.Length; i++)
             {
-                this.Verifier.verify(this.values[i][0], this.values[i][1], this.results[i]);
+                if (this.results[i].Length < 3) this.Verifier.verify(this.values[i][0], this.values[i][1], this.results[i][0], 0, 0);
+                else { this.Verifier.verify(this.values[i][0], this.values[i][1], this.results[i][0], this.results[i][1], this.results[i][2]); }
             }
         }
     }

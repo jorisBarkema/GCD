@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BezoutVerifier.cs" />
     <Compile Include="Euclid.cs" />
     <Compile Include="ExtEuclid.cs" />
     <Compile Include="GCD.cs" />

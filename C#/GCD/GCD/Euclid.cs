@@ -14,17 +14,17 @@ namespace GCD
             this.Name = "Simple Euclid";
         }
 
-        public override BigInteger compute(BigInteger p, BigInteger q, bool debug = false)
+        public override BigInteger[] compute(BigInteger p, BigInteger q, bool debug = false)
         {
             while (p != q)
             {
-                if (p == 0) return q;
-                if (q == 0) return p;
+                if (p == 0) return new BigInteger[] { q };
+                if (q == 0) return new BigInteger[] { p };
                 if (p > q) p = p % q;
                 else { q = q % p; }
             }
 
-            return p;
+            return new BigInteger[] { p };
         }
     }
 }

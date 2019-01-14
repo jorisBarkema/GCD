@@ -11,6 +11,6 @@ namespace GCD
     {
         protected GCD GCD;
 
-        public abstract void verify(BigInteger p, BigInteger q, BigInteger r);
+        public abstract void verify(BigInteger p, BigInteger q, BigInteger r, BigInteger s, BigInteger t);
     }
 }
