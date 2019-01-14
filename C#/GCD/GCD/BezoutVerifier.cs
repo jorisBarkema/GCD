@@ -16,6 +16,7 @@ namespace GCD
 
         public override void verify(BigInteger p, BigInteger q, BigInteger r, BigInteger s, BigInteger t)
         {
+            //Console.WriteLine("p * s + q * t: " + (p * s + q * t) + ", r: " + r);
             if (p * s + q * t != r)
             {
                 this.GCD.compute(p, q, true);

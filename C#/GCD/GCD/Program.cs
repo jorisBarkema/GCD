@@ -17,7 +17,7 @@ namespace GCD
 
             // So far Euclid is fastest, so use that for the GCDVerifier.
             Test euclidTest = new Test(euclid, new GCDVerifier(euclid), 100);
-            Test extEuclidTest = new Test(extEuclid, new GCDVerifier(euclid), 100);
+            Test extEuclidTest = new Test(extEuclid, new BezoutVerifier(euclid), 100);
             Test iterativeSteinTest = new Test(iterativeStein, new GCDVerifier(euclid), 100);
             Test recursiveSteinTest = new Test(recursiveStein, new GCDVerifier(euclid), 100);
 
