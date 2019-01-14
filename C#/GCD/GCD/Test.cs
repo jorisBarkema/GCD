@@ -53,7 +53,7 @@ namespace GCD
 
             Random random = new Random();
             // 256 bytes is 2048 bits
-            byte[] bytes = new byte[256];
+            byte[] bytes = new byte[16];
 
             for (int i = 0; i < this.values.Length; i++)
             {

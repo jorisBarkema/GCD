@@ -20,17 +20,17 @@ namespace GCD
             if (p == 0) return new BigInteger[] { q };
             if (q == 0) return new BigInteger[] { p };
 
-            if (p % 2 == 0)
+            if ((p & 1) == 0)
             {
-                if (q % 2 == 0) return new BigInteger[] { compute(p / 2, q / 2)[0] * 2 };
-                else { return compute(p / 2, q); }
+                if ((q & 1) == 0) return new BigInteger[] { compute(p >> 1, q >> 1)[0] << 1 };
+                else { return compute(p >> 1, q); }
             }
 
-            if (q % 2 == 0) return compute(p, q / 2);
+            if ((q & 1) == 0) return compute(p, q >> 1);
 
-            if (p > q) return compute((p - q) / 2, q);
+            if (p > q) return compute((p - q) >> 1, q);
 
-            return compute(q, (q - p) / 2);
+            return compute(q, (q - p)  >> 1);
         }
     }
 }
