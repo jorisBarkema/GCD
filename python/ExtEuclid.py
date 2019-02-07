@@ -16,20 +16,6 @@ class ExtEuclid(GCD):
         old_t = 0
         new_t = 1
 
-        #TODO: better debug info, for small numbers this is great but not when there are 1000+ iterations
-        if debug:
-            i = 0
-            print("iteration: " + str(i))
-
-            print("old r: " + str(old_r))
-            print("new r: " + str(new_r))
-
-            print("old s: " + str(old_s))
-            print("new s: " + str(new_s))
-
-            print("old t: " + str(old_t))
-            print("new t: " + str(new_t))
-
         while (new_r is not 0):
             quotient = old_r // new_r
 
@@ -37,18 +23,5 @@ class ExtEuclid(GCD):
             old_s, new_s = new_s, old_s - quotient * new_s
             old_t, new_t = new_t, old_t - quotient * new_t
 
-            if debug:
-                i += 1
-                print("iteration: " + str(i))
-                
-                print("old r: " + str(old_r))
-                print("new r: " + str(new_r))
-
-                print("old s: " + str(old_s))
-                print("new s: " + str(new_s))
-
-                print("old t: " + str(old_t))
-                print("new t: " + str(new_t))
-        
         return (old_r, old_s, old_t)
         
