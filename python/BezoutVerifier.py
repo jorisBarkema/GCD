@@ -8,7 +8,7 @@ class BezoutVerifier(Verifier):
 
         # s * p + t * q = gcd
         # values = (p, q), result = (gcd, s, t)
-        if (len(result) != 3 | len(values) != 2): raise Exception("Wrong data format in Bezout Verifier")
+        if (len(result) < 3 | len(values) != 2): raise Exception("Wrong data format in Bezout Verifier")
 
         if not ((result[1] * values[0] + result[2] * values[1]) == result[0]):
             print("p:   " + str(values[0]))

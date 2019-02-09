@@ -15,7 +15,8 @@ class ExtEuclid(GCD):
 
         old_t = 0
         new_t = 1
-
+        count = 0
+        
         while (new_r is not 0):
             quotient = old_r // new_r
 
@@ -23,5 +24,7 @@ class ExtEuclid(GCD):
             old_s, new_s = new_s, old_s - quotient * new_s
             old_t, new_t = new_t, old_t - quotient * new_t
 
-        return (old_r, old_s, old_t)
+            count += 1
+
+        return (old_r, old_s, old_t, count)
         

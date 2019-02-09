@@ -1,6 +1,13 @@
 import time
 import random
 
+from Euclid import Euclid
+from ExtEuclid import ExtEuclid
+#from SimpleStein import SimpleStein
+#from BitOpsStein import BitOpsStein
+from IterativeStein import IterativeStein
+from ExtendedStein import ExtendedStein
+
 class Test:
     def __init__(self, GCD, verifier, size):
         self.GCD = GCD
@@ -23,8 +30,19 @@ class Test:
 
         # time the method took in milliseconds
         self.time = (end_time - begin_time) * 1000
-        print(self.GCD.name + ": " + str(self.time) + " ms")
+        #print(self.GCD.name + ": " + str(self.time) + " ms")
 
+        count = 0
+        if type(self.GCD) is ExtendedStein or type(self.GCD) is ExtEuclid:
+            for i in range(self.size):
+                count += self.results[i][3]
+        elif type(self.GCD) is Euclid or type(self.GCD) is IterativeStein:
+            for i in range(self.size):
+                count += self.results[i][1]
+        
+        count /= self.size
+
+        print(self.GCD.name + ": " + str(self.time) + " ms\t\t" + str(count) + " steps")
         self.verify()
         if (newvalues): self.newvalues()
     
@@ -32,7 +50,7 @@ class Test:
         self.values = []
         self.results = []
         for _ in range(self.size):
-            randoms = (random.randrange(1, 2 ** 2048), random.randrange(1, 2 ** 2048))
+            randoms = (random.randrange(1, 2 ** 10000), random.randrange(1, 2 ** 10000))
             self.values.append(randoms)
     
     def verify(self):

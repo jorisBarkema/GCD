@@ -2,8 +2,8 @@ from GCD import GCD
 
 from Euclid import Euclid
 from ExtEuclid import ExtEuclid
-from SimpleStein import SimpleStein
-from BitOpsStein import BitOpsStein
+#from SimpleStein import SimpleStein
+#from BitOpsStein import BitOpsStein
 from IterativeStein import IterativeStein
 from ExtendedStein import ExtendedStein
 
@@ -16,20 +16,20 @@ from BezoutVerifier import BezoutVerifier
 EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
 ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
-SimpleSteinTest = Test(SimpleStein(), GCDVerifier(SimpleStein()), 100)
+#SimpleSteinTest = Test(SimpleStein(), GCDVerifier(SimpleStein()), 100)
 ExtendedSteinTest = Test(ExtendedStein(), BezoutVerifier(ExtEuclid()), 100)
 
 for _ in range(10):
     ExtendedSteinTest.perform()
 
-for _ in range(10):
-    ExtEuclidTest.perform()
+#for _ in range(10):
+#    ExtEuclidTest.perform()
 
 for _ in range(10):
     IterativeSteinTest.perform()
 
-for _ in range(10):
-    EuclidTest.perform()
+#for _ in range(10):
+#    EuclidTest.perform()
 
 # Recursion depth exceeded
 #for _ in range(10):

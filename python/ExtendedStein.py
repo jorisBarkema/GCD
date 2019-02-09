@@ -6,7 +6,7 @@ class ExtendedStein(GCD):
     
     def compute(self, p, q, debug = False):
         shift = 0
-
+        count = 0
         # sp * p0 + sq * q0 = p
         # tp * p0 + tq * q0 = q
         sp = 1
@@ -16,15 +16,24 @@ class ExtendedStein(GCD):
         tq = 1
 
         # simple cases
-        if (p == 0): return (q, 0, 1)
-        if (q == 0): return (p, 1, 0)
+        if (p == 0): return (q, 0, 1, 1)
+        if (q == 0): return (p, 1, 0, 1)
 
+        """
         # remove common factors of 2
         while (((p | q) & 1) == 0):
             shift += 1
             p >>= 1
             q >>= 1
+            count += 1
+        """
+        while (((p | q) & (1 << shift)) == 0):
+            shift += 1
         
+        p >>= shift
+        q >>= shift
+        count += 1
+
         # merk op pas na de gemeenschappelijke factoren van 2 dit doen zodat er minstens eentje oneven is
         # de shift maakt het toch wel goed op het einde
         p0 = p
@@ -67,6 +76,7 @@ class ExtendedStein(GCD):
             sq >>= 1
 
             p >>= 1
+            count += 1
         
         while (q != 0):
             # make q odd
@@ -82,6 +92,7 @@ class ExtendedStein(GCD):
                 tq >>= 1
 
                 q >>= 1
+                count += 1
             
             # swap p and q to make sure p <= q
             if (p > q):
@@ -93,8 +104,9 @@ class ExtendedStein(GCD):
             q = (q - p)
             tp = tp - sp
             tq = tq - sq
+            count += 1
         
-        return (p << shift, sp, sq)
+        return (p << shift, sp, sq, count)
 
 
 
