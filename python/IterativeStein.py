@@ -45,7 +45,7 @@ class IterativeStein(GCD):
             
             q = (q - p) >> 1
             # 2 in de extended versie
-            count += 2
+            count += 1
         
         return (p << shift, count)
 
