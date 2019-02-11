@@ -50,7 +50,7 @@ class Test:
         self.values = []
         self.results = []
         for _ in range(self.size):
-            randoms = (random.randrange(1, 2 ** 10000), random.randrange(1, 2 ** 10000))
+            randoms = (random.randrange(1, 2 ** 100), random.randrange(1, 2 ** 100))
             self.values.append(randoms)
     
     def verify(self):

@@ -13,43 +13,55 @@ from Verifier import Verifier
 from GCDVerifier import GCDVerifier
 from BezoutVerifier import BezoutVerifier
 
-EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
-ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100000)
+ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100000)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 #SimpleSteinTest = Test(SimpleStein(), GCDVerifier(SimpleStein()), 100)
 ExtendedSteinTest = Test(ExtendedStein(), BezoutVerifier(ExtEuclid()), 100)
+"""
+#for _ in range(10):
+#    ExtendedSteinTest.perform()
 
 for _ in range(10):
-    ExtendedSteinTest.perform()
+    ExtEuclidTest.perform()
 
 #for _ in range(10):
-#    ExtEuclidTest.perform()
+#    IterativeSteinTest.perform()
 
 for _ in range(10):
-    IterativeSteinTest.perform()
-
-#for _ in range(10):
-#    EuclidTest.perform()
+    EuclidTest.perform()
 
 # Recursion depth exceeded
 #for _ in range(10):
 #    SimpleSteinTest.perform()
 
-# below a small test to test multiplication, division and bitoperator speeds
 """
+
+# importing the required module 
+import timeit 
+  
+# code snippet to be executed only once 
+mysetup = '''
+import random
 values = []
 
-for _ in range(10000):
-    values.append(random.randrange(1, 2 ** 2048))
-
+for i in range(1000):
+    values.append((random.randrange(1, 2 ** 9000), random.randrange(1, 2 ** 9000)))
+    if (values[i][0] < values[i][1]):
+        values[i] = (values[i][1], values[i][0])
+'''
+  
+# code snippet whose execution time is to be measured 
+mycode = ''' 
+for v in values: x = v[0] % v[1]
+'''
+  
+# timeit statement
+# tijd in seconden voor number keer mycode
 for _ in range(10):
-    begin_time = time.time()
+    print(timeit.timeit(setup = mysetup, 
+                    stmt = mycode, 
+                    number = 10000))
 
-    #for v in values: v = v >> 1
-    #for v in values: v = v << 1
-    #for v in values: v = v // 2
-    for v in values: v = v * 2
 
-    end_time = time.time()
-    print("duration (ms): " + str((end_time - begin_time) * 1000))
-"""
+#https://www.geeksforgeeks.org/timeit-python-examples/
