@@ -57,14 +57,26 @@ namespace GCD
 
             for (int i = 0; i < this.values.Length; i++)
             {
-                this.values[i] = new BigInteger[2];
-                random.NextBytes(bytes);
-                this.values[i][0] = new BigInteger(bytes);
-                if (this.values[i][0] < 0) this.values[i][0] *= -1;
-                random.NextBytes(bytes);
-                this.values[i][1] = new BigInteger(bytes);
-                if (this.values[i][1] < 0) this.values[i][1] *= -1;
+                this.values[i][0] = CreateBigInteger(2048);
+                this.values[i][1] = CreateBigInteger(2048);
             }
+        }
+
+        /// <summary>
+        /// will round the bits number to multiple of 8.
+        /// </summary>
+        /// <param name="bits"></param>
+        /// <returns></returns>
+        public BigInteger CreateBigInteger(int bits = 2048)
+        {
+            Random random = new Random();
+            byte[] bytes = new byte[bits / 8];
+
+            random.NextBytes(bytes);
+            BigInteger b = new BigInteger(bytes);
+            if (b < 0) b *= -1;
+
+            return b;
         }
 
         private void Verify()
