@@ -38,37 +38,40 @@ namespace GCD
             Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
             Thread.CurrentThread.Priority = ThreadPriority.Highest;
 
-            for(int k = 0; k < 10; k++)
+            for(int t = 1; t <= 10; t++)
             {
-                int size = 1000;
-                // setup and warm up
-                Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[1000];
-                for (int i = 0; i < testValues.Length; i++)
+                Console.WriteLine("Times for " + 1000 * t + " bits");
+                for (int k = 0; k < 10; k++)
                 {
-                    testValues[i] = Tuple.Create(euclidTest.CreateBigInteger(size), euclidTest.CreateBigInteger(size));
-                }
-
-                BigInteger x = testValues[0].Item1 % testValues[0].Item2;
-
-                var watch = new Stopwatch();
-
-                // clean up
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-
-                watch.Start();
-                for (int i = 0; i < 10000; i++)
-                {
-                    for (int j = 0; j < testValues.Length; j++)
+                    // setup and warm up
+                    Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[1000];
+                    for (int i = 0; i < testValues.Length; i++)
                     {
-                        x = testValues[j].Item1 % testValues[j].Item2;
+                        testValues[i] = Tuple.Create(euclidTest.CreateBigInteger(1000 * t), euclidTest.CreateBigInteger(1000 * t));
                     }
+
+                    BigInteger x = testValues[0].Item1 % testValues[0].Item2;
+
+                    var watch = new Stopwatch();
+
+                    // clean up
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+
+                    watch.Start();
+                    for (int i = 0; i < 10000; i++)
+                    {
+                        for (int j = 0; j < testValues.Length; j++)
+                        {
+                            x = testValues[j].Item1 % testValues[j].Item2;
+                        }
+                    }
+                    watch.Stop();
+                    Console.WriteLine(" Time Elapsed {0} ms", watch.Elapsed.TotalSeconds);
                 }
-                watch.Stop();
-                Console.WriteLine(" Time Elapsed {0} ms", watch.Elapsed.TotalSeconds);
             }
-            
+
             Console.ReadLine();
         }
     }

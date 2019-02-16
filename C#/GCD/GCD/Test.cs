@@ -57,6 +57,7 @@ namespace GCD
 
             for (int i = 0; i < this.values.Length; i++)
             {
+                this.values[i] = new BigInteger[2];
                 this.values[i][0] = CreateBigInteger(2048);
                 this.values[i][1] = CreateBigInteger(2048);
             }
