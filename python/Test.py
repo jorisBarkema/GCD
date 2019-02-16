@@ -43,7 +43,7 @@ class Test:
         count /= self.size
 
         #print(self.GCD.name + ": " + str(self.time) + " ms\t\t" + str(count) + " steps")
-        print(count)
+        print(self.time)
         self.verify()
         if (newvalues): self.newvalues()
     
@@ -51,7 +51,7 @@ class Test:
         self.values = []
         self.results = []
         for _ in range(self.size):
-            randoms = (random.randrange(1, 2 ** 50000), random.randrange(1, 2 ** 50000))
+            randoms = (random.randrange(1, 2 ** 10000), random.randrange(1, 2 ** 10000))
             self.values.append(randoms)
     
     def verify(self):

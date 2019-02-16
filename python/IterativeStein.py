@@ -31,13 +31,13 @@ class IterativeStein(GCD):
         # make p odd
         while ((p & 1) == 0):
             p >>= 1
-            count += 1
+            #count += 1
         
         while (q != 0):
             # make q odd
             while ((q & 1) == 0):
                 q >>= 1
-                count += 1
+                #count += 1
             
             # swap p and q to make sure p <= q
             if (p > q):
@@ -45,7 +45,7 @@ class IterativeStein(GCD):
             
             q = (q - p) >> 1
             # 2 in de extended versie
-            count += 1
+            #count += 1
         
         return (p << shift, count)
 

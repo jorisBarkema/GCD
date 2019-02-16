@@ -12,9 +12,9 @@ class Euclid(GCD):
             if (q == 0): return (p, count)
             if (p > q): 
                 p = p % q
-                count += 1
+                #count += 1
             else: 
                 q = q % p
-                count += 1
+                #count += 1
         
         return (p, count)

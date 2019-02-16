@@ -32,7 +32,7 @@ class ExtendedStein(GCD):
         
         p >>= shift
         q >>= shift
-        count += 1
+        #count += 1
 
         # merk op pas na de gemeenschappelijke factoren van 2 dit doen zodat er minstens eentje oneven is
         # de shift maakt het toch wel goed op het einde
@@ -76,7 +76,7 @@ class ExtendedStein(GCD):
             sq >>= 1
 
             p >>= 1
-            count += 1
+            #count += 1
         
         while (q != 0):
             # make q odd
@@ -92,7 +92,7 @@ class ExtendedStein(GCD):
                 tq >>= 1
 
                 q >>= 1
-                count += 1
+                #count += 1
             
             # swap p and q to make sure p <= q
             if (p > q):
@@ -104,7 +104,7 @@ class ExtendedStein(GCD):
             q = (q - p)
             tp = tp - sp
             tq = tq - sq
-            count += 1
+            #count += 1
         
         return (p << shift, sp, sq, count)
 
