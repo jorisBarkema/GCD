@@ -13,21 +13,25 @@ from Verifier import Verifier
 from GCDVerifier import GCDVerifier
 from BezoutVerifier import BezoutVerifier
 
-EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100000)
-ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100000)
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
+ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
 #SimpleSteinTest = Test(SimpleStein(), GCDVerifier(SimpleStein()), 100)
 ExtendedSteinTest = Test(ExtendedStein(), BezoutVerifier(ExtEuclid()), 100)
-"""
-#for _ in range(10):
-#    ExtendedSteinTest.perform()
 
+print("Extended Stein")
+for _ in range(10):
+    ExtendedSteinTest.perform()
+
+print("Extended Euclid")
 for _ in range(10):
     ExtEuclidTest.perform()
 
-#for _ in range(10):
-#    IterativeSteinTest.perform()
+print("Stein")
+for _ in range(10):
+    IterativeSteinTest.perform()
 
+print("Euclid")
 for _ in range(10):
     EuclidTest.perform()
 
@@ -35,8 +39,8 @@ for _ in range(10):
 #for _ in range(10):
 #    SimpleSteinTest.perform()
 
-"""
 
+"""
 # importing the required module 
 import timeit 
   
@@ -46,11 +50,11 @@ import random
 values = []
 
 for i in range(1000):
-    values.append((random.randrange(1, 2 ** 9000), random.randrange(1, 2 ** 9000)))
+    values.append((random.randrange(1, 2 ** 1000), random.randrange(1, 2 ** 1000)))
     if (values[i][0] < values[i][1]):
         values[i] = (values[i][1], values[i][0])
 '''
-  
+
 # code snippet whose execution time is to be measured 
 mycode = ''' 
 for v in values: x = v[0] % v[1]
@@ -58,10 +62,11 @@ for v in values: x = v[0] % v[1]
   
 # timeit statement
 # tijd in seconden voor number keer mycode
+print("results for 1000 bits")
 for _ in range(10):
     print(timeit.timeit(setup = mysetup, 
                     stmt = mycode, 
                     number = 10000))
 
-
 #https://www.geeksforgeeks.org/timeit-python-examples/
+"""

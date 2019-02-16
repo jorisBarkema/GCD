@@ -45,13 +45,15 @@ namespace GCD
                 {
                     // setup and warm up
                     Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[1000];
+                    //BigInteger[] testValues = new BigInteger[1000];
                     for (int i = 0; i < testValues.Length; i++)
                     {
+                        //testValues[i] = euclidTest.CreateBigInteger(1000 * t);
                         testValues[i] = Tuple.Create(euclidTest.CreateBigInteger(1000 * t), euclidTest.CreateBigInteger(1000 * t));
                     }
 
-                    BigInteger x = testValues[0].Item1 % testValues[0].Item2;
-
+                    BigInteger x = testValues[0].Item1 - testValues[0].Item2;
+                    //BigInteger x = testValues[0] >> 1;
                     var watch = new Stopwatch();
 
                     // clean up
@@ -64,11 +66,11 @@ namespace GCD
                     {
                         for (int j = 0; j < testValues.Length; j++)
                         {
-                            x = testValues[j].Item1 % testValues[j].Item2;
+                            x = testValues[j].Item1 - testValues[j].Item2;
                         }
                     }
                     watch.Stop();
-                    Console.WriteLine(" Time Elapsed {0} ms", watch.Elapsed.TotalSeconds);
+                    Console.WriteLine(" Time Elapsed {0} s", watch.Elapsed.TotalSeconds);
                 }
             }
 
