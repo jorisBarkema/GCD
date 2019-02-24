@@ -20,15 +20,17 @@ class ExtendedStein(GCD):
         if (q == 0): return (p, 1, 0, 1)
 
         """
-        # remove common factors of 2
-        while (((p | q) & 1) == 0):
+        while (((p & 1) & (q & 1)) == 0):
             shift += 1
             p >>= 1
             q >>= 1
-            count += 1
+            #count += 1
         """
-        while (((p | q) & (1 << shift)) == 0):
+        
+        while (((p & (1 << shift)) | (q & (1 << shift))) == 0):
             shift += 1
+        #while (((p | q) & (1 << shift)) == 0):
+        #    shift += 1
         
         p >>= shift
         q >>= shift

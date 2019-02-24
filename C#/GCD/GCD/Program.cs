@@ -49,10 +49,10 @@ namespace GCD
                     for (int i = 0; i < testValues.Length; i++)
                     {
                         //testValues[i] = euclidTest.CreateBigInteger(1000 * t);
-                        testValues[i] = Tuple.Create(euclidTest.CreateBigInteger(1000 * t), euclidTest.CreateBigInteger(1000 * t));
+                        testValues[i] = Tuple.Create(euclidTest.CreateBigInteger(10000), euclidTest.CreateBigInteger(10));
                     }
 
-                    BigInteger x = testValues[0].Item1 - testValues[0].Item2;
+                    BigInteger x = testValues[0].Item1 % testValues[0].Item2;
                     //BigInteger x = testValues[0] >> 1;
                     var watch = new Stopwatch();
 
@@ -62,11 +62,12 @@ namespace GCD
                     GC.Collect();
 
                     watch.Start();
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         for (int j = 0; j < testValues.Length; j++)
                         {
-                            x = testValues[j].Item1 - testValues[j].Item2;
+                            x = testValues[j].Item1 % testValues[j].Item2;
+                            //Console.WriteLine("tested " + i);
                         }
                     }
                     watch.Stop();

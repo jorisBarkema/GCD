@@ -9,10 +9,11 @@ from IterativeStein import IterativeStein
 from ExtendedStein import ExtendedStein
 
 class Test:
-    def __init__(self, GCD, verifier, size):
+    def __init__(self, GCD, verifier, size, numbers_size):
         self.GCD = GCD
         self.verifier = verifier
         self.size = size
+        self.numbers_size = numbers_size
         self.values = []
         self.newvalues()
         self.results = []
@@ -51,7 +52,7 @@ class Test:
         self.values = []
         self.results = []
         for _ in range(self.size):
-            randoms = (random.randrange(1, 2 ** 10000), random.randrange(1, 2 ** 10000))
+            randoms = (random.randrange(1, 2 ** self.numbers_size), random.randrange(1, 2 ** self.numbers_size))
             self.values.append(randoms)
     
     def verify(self):

@@ -6,6 +6,7 @@ from ExtEuclid import ExtEuclid
 #from BitOpsStein import BitOpsStein
 from IterativeStein import IterativeStein
 from ExtendedStein import ExtendedStein
+from PrimeGCD import PrimeGCD
 
 from Test import Test
 
@@ -13,32 +14,80 @@ from Verifier import Verifier
 from GCDVerifier import GCDVerifier
 from BezoutVerifier import BezoutVerifier
 
-EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100)
-ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100)
-IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100)
+"""
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 1000)
+ExtEuclidTest = Test(ExtEuclid(), BezoutVerifier(ExtEuclid()), 100, 1000)
+IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 1000)
 #SimpleSteinTest = Test(SimpleStein(), GCDVerifier(SimpleStein()), 100)
-ExtendedSteinTest = Test(ExtendedStein(), BezoutVerifier(ExtEuclid()), 100)
+ExtendedSteinTest = Test(ExtendedStein(), BezoutVerifier(ExtEuclid()), 100, 1000)
+PrimeGCDTest = Test(PrimeGCD(), GCDVerifier(PrimeGCD()), 100, 1000)
+"""
 
-print("Extended Stein")
+"""
+for t in range(1, 11):
+    EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, t * 1000)
+    print("Euclid, " + str(t * 1000) + " bits")
+    for _ in range(10):
+        EuclidTest.perform()
+
+    IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, t * 1000)
+    print("Stein, " + str(t * 1000) + " bits")
+    for _ in range(10):
+        IterativeSteinTest.perform()
+"""
+
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 15000)
+print("Euclid, " + str(15 * 1000) + " bits")
 for _ in range(10):
-    ExtendedSteinTest.perform()
+    EuclidTest.perform()
 
-print("Extended Euclid")
-for _ in range(10):
-    ExtEuclidTest.perform()
-
-print("Stein")
+IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 15000)
+print("Stein, " + str(15000) + " bits")
 for _ in range(10):
     IterativeSteinTest.perform()
 
-print("Euclid")
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 20000)
+print("Euclid, " + str(20 * 1000) + " bits")
 for _ in range(10):
     EuclidTest.perform()
+
+IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 20000)
+print("Stein, " + str(20 * 1000) + " bits")
+for _ in range(10):
+    IterativeSteinTest.perform()
+
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 30000)
+print("Euclid, " + str(30 * 1000) + " bits")
+for _ in range(10):
+    EuclidTest.perform()
+
+IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 30000)
+print("Stein, " + str(30 * 1000) + " bits")
+for _ in range(10):
+    IterativeSteinTest.perform()
+#print("Extended Stein")
+#for _ in range(10):
+#    ExtendedSteinTest.perform()
+
+#print("Extended Euclid")
+#for _ in range(10):
+#    ExtEuclidTest.perform()
+
+#print("Stein")
+#for _ in range(10):
+#    IterativeSteinTest.perform()
+
+#print("Euclid")
+#for _ in range(10):
+#    EuclidTest.perform()
 
 # Recursion depth exceeded
 #for _ in range(10):
 #    SimpleSteinTest.perform()
 
+#print("Prime GCD")
+#for _ in range(10):
+#    PrimeGCDTest.perform()
 
 """
 # importing the required module 
