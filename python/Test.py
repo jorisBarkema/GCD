@@ -34,12 +34,22 @@ class Test:
         #print(self.GCD.name + ": " + str(self.time) + " ms")
 
         count = 0
+        fractions = {}
+
         if type(self.GCD) is ExtendedStein or type(self.GCD) is ExtEuclid:
             for i in range(self.size):
                 count += self.results[i][3]
         elif type(self.GCD) is Euclid or type(self.GCD) is IterativeStein:
             for i in range(self.size):
                 count += self.results[i][1]
+                for key in self.results[i][2].keys():
+                    fractions[key] = fractions.get(key, 0) + self.results[i][2][key]
+            
+            
+            for key in sorted(fractions.keys()):
+                print(str(key) + ';' + str(fractions[key]))
+
+            #print("fractions: " + str(self.results[i][2]))
         
         count /= self.size
 

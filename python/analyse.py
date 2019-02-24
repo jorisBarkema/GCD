@@ -36,11 +36,12 @@ for t in range(1, 11):
         IterativeSteinTest.perform()
 """
 
-EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 15000)
-print("Euclid, " + str(15 * 1000) + " bits")
-for _ in range(10):
+EuclidTest = Test(Euclid(), GCDVerifier(Euclid()), 100, 1000)
+print("Euclid, " + str(1000) + " bits")
+for _ in range(1):
     EuclidTest.perform()
 
+"""
 IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 15000)
 print("Stein, " + str(15000) + " bits")
 for _ in range(10):
@@ -65,6 +66,8 @@ IterativeSteinTest = Test(IterativeStein(), GCDVerifier(IterativeStein()), 100, 
 print("Stein, " + str(30 * 1000) + " bits")
 for _ in range(10):
     IterativeSteinTest.perform()
+
+"""
 #print("Extended Stein")
 #for _ in range(10):
 #    ExtendedSteinTest.perform()
