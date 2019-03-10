@@ -12,12 +12,7 @@ namespace GCD
 {
     public class Utils
     {
-        public Utils()
-        {
-
-        }
-
-        public void PerformanceTest()
+        public static void PerformanceTest()
         {
             // Test method from
             // https://stackoverflow.com/questions/1047218/benchmarking-small-code-samples-in-c-can-this-implementation-be-improved
@@ -36,7 +31,7 @@ namespace GCD
                     for (int i = 0; i < testValues.Length; i++)
                     {
                         //testValues[i] = euclidTest.CreateBigInteger(1000 * t);
-                        testValues[i] = Tuple.Create(this.CreateBigInteger(1000 * t), this.CreateBigInteger(500 * t));
+                        testValues[i] = Tuple.Create(Utils.CreateBigInteger(1000 * t), Utils.CreateBigInteger(500 * t));
                     }
 
                     BigInteger x = testValues[0].Item1 % testValues[0].Item2;
@@ -68,7 +63,7 @@ namespace GCD
         /// </summary>
         /// <param name="bits"></param>
         /// <returns></returns>
-        public BigInteger CreateBigInteger(int bits = 2048)
+        public static BigInteger CreateBigInteger(int bits = 2048)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
             byte[] bytes = new byte[bits / 8];

@@ -25,11 +25,9 @@ namespace GCD
             Test iterativeSteinTest = new Test(iterativeStein, new GCDVerifier(euclid), 100);
             Test recursiveSteinTest = new Test(recursiveStein, new GCDVerifier(euclid), 100);
 
-            Utils u = new Utils();
+            for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
-            for (int i = 0; i < 20; i++) Console.WriteLine(u.CreateBigInteger(100));
-
-            u.PerformanceTest();
+            Utils.PerformanceTest();
 
             for (int i = 0; i < 10; i++) euclidTest.Perform();
             for (int i = 0; i < 10; i++) extEuclidTest.Perform();

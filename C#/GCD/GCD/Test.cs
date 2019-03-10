@@ -16,14 +16,12 @@ namespace GCD
         private int size;
         private BigInteger[][] values;
         private BigInteger[][] results;
-        private Utils u;
 
         public Test(GCD gcd, Verifier verifier, int size)
         {
             this.GCD = gcd;
             this.Verifier = verifier;
             this.size = size;
-            this.u = new Utils();
 
             this.NewValues();
         }
@@ -60,8 +58,8 @@ namespace GCD
             for (int i = 0; i < this.values.Length; i++)
             {
                 this.values[i] = new BigInteger[2];
-                this.values[i][0] = u.CreateBigInteger(10000);
-                this.values[i][1] = u.CreateBigInteger(10000);
+                this.values[i][0] = Utils.CreateBigInteger(10000);
+                this.values[i][1] = Utils.CreateBigInteger(10000);
             }
         }
         
