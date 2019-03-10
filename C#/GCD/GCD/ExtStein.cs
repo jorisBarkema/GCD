@@ -20,16 +20,13 @@ namespace GCD
 
             if (p == 0) return new BigInteger[] { q, 0, 1 };
             if (q == 0) return new BigInteger[] { p, 1, 0 };
-
-            // zolang p en q beide even zijn
-            // while (((p | q) & 1 << shift) == 0)
-            while (((p & (1 << shift)) | (q & (1 << shift))) == 0)
+            
+            while (p.IsEven && q.IsEven)
             {
-                shift += 1;
+                p >>= 1;
+                q >>= 1;
+                shift++;
             }
-
-            p >>= shift;
-            q >>= shift;
 
             /* 
                we willen bereiken p * s + q * t = r
@@ -76,7 +73,7 @@ namespace GCD
             BigInteger sp = 1, sq = 0;
             BigInteger tp = 0, tq = 1;
 
-            while ((p & 1) == 0)
+            while (p.IsEven)
             {
                 // als sp en sq beide even zijn kunnen we die ook door twee delen
 
@@ -108,9 +105,7 @@ namespace GCD
                  *    sq += p0
                  */
 
-            // als een van de twee niet even is
-            //if (!(((sp | sq) & 1) == 0))
-            if (((sp & 1) | (sq & 1)) != 0)
+                if (!(sp.IsEven && sq.IsEven))
                 {
                     sp -= q0;
                     sq += p0;
@@ -120,11 +115,11 @@ namespace GCD
                 sq >>= 1;
             }
 
-            while (q != 0)
+            while (!q.IsZero)
             {
-                while ((q & 1) == 0)
+                while (q.IsEven)
                 {
-                    if (((tp & 1) | (tq & 1)) != 0)
+                    if (!(tp.IsEven && tq.IsEven))
                     {
                         tp -= q0;
                         tq += p0;

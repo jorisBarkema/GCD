@@ -33,12 +33,13 @@ namespace GCD
 
             //Utils.PerformanceTest();
 
-            //for (int i = 0; i < 3; i++) builtInGCDTest.Perform();
-            //for (int i = 0; i < 3; i++) extSteinTest.Perform();
+            for (int i = 0; i < 5; i++) builtInGCDTest.Perform();
+            for (int i = 0; i < 5; i++) extSteinTest.Perform();
             //for (int i = 0; i < 3; i++) euclidTest.Perform();
             //for (int i = 0; i < 3; i++) extEuclidTest.Perform();
-            for (int i = 0; i < 10; i++) iterativeSteinTest.Perform();
-            
+            for (int i = 0; i < 5; i++) iterativeSteinTest.Perform();
+
+            Console.WriteLine("\nfinished");
             Console.ReadLine();
         }
     }
