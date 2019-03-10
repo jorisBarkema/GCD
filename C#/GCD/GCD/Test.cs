@@ -16,12 +16,14 @@ namespace GCD
         private int size;
         private BigInteger[][] values;
         private BigInteger[][] results;
+        private Utils u;
 
         public Test(GCD gcd, Verifier verifier, int size)
         {
             this.GCD = gcd;
             this.Verifier = verifier;
             this.size = size;
+            this.u = new Utils();
 
             this.NewValues();
         }
@@ -53,33 +55,16 @@ namespace GCD
 
             Random random = new Random();
             // 256 bytes is 2048 bits
-            byte[] bytes = new byte[256];
+            //byte[] bytes = new byte[256];
 
             for (int i = 0; i < this.values.Length; i++)
             {
                 this.values[i] = new BigInteger[2];
-                this.values[i][0] = CreateBigInteger(2048);
-                this.values[i][1] = CreateBigInteger(2048);
+                this.values[i][0] = u.CreateBigInteger(10000);
+                this.values[i][1] = u.CreateBigInteger(10000);
             }
         }
-
-        /// <summary>
-        /// will round the bits number to multiple of 8.
-        /// </summary>
-        /// <param name="bits"></param>
-        /// <returns></returns>
-        public BigInteger CreateBigInteger(int bits = 2048)
-        {
-            Random random = new Random();
-            byte[] bytes = new byte[bits / 8];
-
-            random.NextBytes(bytes);
-            BigInteger b = new BigInteger(bytes);
-            if (b < 0) b *= -1;
-
-            return b;
-        }
-
+        
         private void Verify()
         {
             for (int i = 0; i < this.values.Length; i++)
