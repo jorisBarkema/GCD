@@ -47,6 +47,7 @@
     <Compile Include="BezoutVerifier.cs" />
     <Compile Include="Euclid.cs" />
     <Compile Include="ExtEuclid.cs" />
+    <Compile Include="ExtStein.cs" />
     <Compile Include="GCD.cs" />
     <Compile Include="GCDVerifier.cs" />
     <Compile Include="IterativeStein.cs" />

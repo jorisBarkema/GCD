@@ -20,7 +20,15 @@ namespace GCD
             if (p * s + q * t != r)
             {
                 this.GCD.compute(p, q, true);
-                throw new Exception("Wrong result from the BezoutVerifier");
+                //throw new Exception("Wrong result from the BezoutVerifier");
+                Console.WriteLine("Wrong result from the BezoutVerifier");
+                Console.WriteLine("p: " + p);
+                Console.WriteLine("q: " + q);
+                Console.WriteLine("r: " + r);
+                Console.WriteLine();
+                Console.WriteLine("s: " + s);
+                Console.WriteLine("t: " + t);
+                Console.WriteLine("p * s + q * t: " + p * s + q * t);
             }
         }
     }
