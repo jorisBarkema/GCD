@@ -31,11 +31,47 @@ namespace GCD
             p >>= shift;
             q >>= shift;
 
-            // pas na de gemeenschappelijke factoren van twee er uit halen dit doen zodat er minstens eentje oneven is
-            BigInteger p0 = p, q0 = q;
+            /* 
+               we willen bereiken p * s + q * t = r
+               maar Stein's berekent r' = r >> shift en doet de shift op het einde pas.
 
+               we willen pas na de gemeenschappelijke factoren van twee er uit halen p0 en q0 vaststellen, dan is er minstens eentje oneven
+               zeg p' en q' zijn p en q zonder gemeenschappelijke factoren van twee
+              
+               op het einde van het algoritme geldt p = r', en sp * p0 + sq * q0 = p.
+               dus sp * p' + sq * q' = r'
+               dan geldt ook (sp * p' + sq * q') << shift = (r' << shift)
+               ((sp * p') << shift) + ((sq * q') << shift) = r
+               p * sp + q * sq = r
+               dus sp = s, sq = t
+            */
+            BigInteger p0 = p, q0 = q;
+              
+            // invariant
             // sp * p0 + sq * q0 = p
             // tp * p0 + tq * q0 = q
+
+            /*
+                a)
+                
+                if (((sp & 1) | (sq & 1)) != 0)
+                {
+                    sp -= q0;
+                    sq += p0;
+                }
+
+                b)
+
+                p >>= 1;
+                sp >>= 1;
+                sq >>= 1;
+
+                a) sp * p0 + sq * q0 -> (sp - q0) * p0 + (sq + p0) * q0
+                = sp * p0 + sq * q0 - q0 * p0 + p0 * q0
+                = sp * p0 + sq * q0
+
+                b) beide kanten delen door twee
+            */
 
             BigInteger sp = 1, sq = 0;
             BigInteger tp = 0, tq = 1;
@@ -72,9 +108,9 @@ namespace GCD
                  *    sq += p0
                  */
 
-                // als een van de twee niet even is
-                //if (!(((sp | sq) & 1) == 0))
-                if (((sp & 1) | (sq & 1)) != 0)
+            // als een van de twee niet even is
+            //if (!(((sp | sq) & 1) == 0))
+            if (((sp & 1) | (sq & 1)) != 0)
                 {
                     sp -= q0;
                     sq += p0;
