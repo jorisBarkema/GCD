@@ -27,14 +27,14 @@ namespace GCD
             Test recursiveSteinTest = new Test(recursiveStein, new GCDVerifier(euclid), 100);
             Test extSteinTest = new Test(extStein, new BezoutVerifier(euclid), 100);
 
-            for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
+            //for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
             //Utils.PerformanceTest();
 
             for (int i = 0; i < 10; i++) extSteinTest.Perform();
-            for (int i = 0; i < 10; i++) euclidTest.Perform();
-            for (int i = 0; i < 10; i++) extEuclidTest.Perform();
-            for (int i = 0; i < 10; i++) iterativeSteinTest.Perform();
+            //for (int i = 0; i < 10; i++) euclidTest.Perform();
+            //for (int i = 0; i < 10; i++) extEuclidTest.Perform();
+            //for (int i = 0; i < 10; i++) iterativeSteinTest.Perform();
             
             Console.ReadLine();
         }
