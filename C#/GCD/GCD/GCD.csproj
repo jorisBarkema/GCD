@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BezoutVerifier.cs" />
+    <Compile Include="BuiltInGCD.cs" />
     <Compile Include="Euclid.cs" />
     <Compile Include="ExtEuclid.cs" />
     <Compile Include="ExtStein.cs" />

@@ -21,30 +21,54 @@ namespace GCD
             if (p == 0) return new BigInteger[] { q };
             if (q == 0) return new BigInteger[] { p };
 
-            while(((p | q) & 1) == 0)
+            // zolang p en q beide even zijn
+            // while (((p | q) & 1 << shift) == 0)
+            //while (((p & (1 << shift)) | (q & (1 << shift))) == 0)
+            //{
+            //    shift += 1;
+            //}
+
+            //p >>= shift;
+            //q >>= shift;
+
+            while (p.IsEven && q.IsEven)
             {
-                shift++;
                 p >>= 1;
                 q >>= 1;
+                shift++;
             }
 
-            while((p & 1) == 0)
+            /*
+            int temp = 0;
+
+            while((p & (1 << temp)) == 0)
+            {
+                temp++;
+            }
+
+            p >>= temp;
+            */
+            while (p.IsEven)
             {
                 p >>= 1;
             }
-
-            while(q != 0)
+            while (q != 0)
             {
-                while ((q & 1) == 0)
-                {
-                    q >>= 1;
-                }
+                //temp = 0;
+
+                //while ((q & (1 << temp)) == 0)
+                //{
+                //    temp++;
+                //
+
+                //q >>= temp;
+                while (q.IsEven) q >>= 1;
 
                 if (p > q)
                 {
-                    BigInteger t = p;
+                    BigInteger swap = p;
                     p = q;
-                    q = t;
+                    q = swap;
                 }
 
                 q = (q - p) >> 1;

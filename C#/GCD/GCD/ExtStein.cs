@@ -51,7 +51,7 @@ namespace GCD
             // sp * p0 + sq * q0 = p
             // tp * p0 + tq * q0 = q
 
-            /*
+            /*  invariant blijft gelden in deze stap (en gelijke versie met tp en tq):
                 a)
                 
                 if (((sp & 1) | (sq & 1)) != 0)
@@ -70,7 +70,7 @@ namespace GCD
                 = sp * p0 + sq * q0 - q0 * p0 + p0 * q0
                 = sp * p0 + sq * q0
 
-                b) beide kanten delen door twee
+                b) beide kanten delen door twee, triviaal
             */
 
             BigInteger sp = 1, sq = 0;
