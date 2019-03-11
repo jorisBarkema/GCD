@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GCD
 {
-    class IterativeStein : GCD
+    class Stein : GCD
     {
-        public IterativeStein()
+        public Stein()
         {
-            this.Name = "Iterative Stein";
+            this.Name = "Stein";
         }
 
         public override BigInteger[] compute(BigInteger p, BigInteger q, bool debug = false)

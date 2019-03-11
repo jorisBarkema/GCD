@@ -27,15 +27,13 @@ namespace GCD
                 {
                     // setup and warm up
                     Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[1000];
-                    //BigInteger[] testValues = new BigInteger[1000];
                     for (int i = 0; i < testValues.Length; i++)
                     {
-                        //testValues[i] = euclidTest.CreateBigInteger(1000 * t);
                         testValues[i] = Tuple.Create(Utils.CreateBigInteger(1000 * t), Utils.CreateBigInteger(500 * t));
                     }
 
                     BigInteger x = testValues[0].Item1 % testValues[0].Item2;
-                    //BigInteger x = testValues[0] >> 1;
+
                     var watch = new Stopwatch();
 
                     // clean up

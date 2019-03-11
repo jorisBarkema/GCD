@@ -29,6 +29,15 @@ namespace GCD
         public void Perform(bool newvalues = true, bool debug = false)
         {
             Stopwatch stopwatch = new Stopwatch();
+
+            // warm up
+            this.results[0] = this.GCD.compute(this.values[0][0], this.values[0][1], false);
+
+            // clean up
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+
             stopwatch.Start();
 
             for (int i = 0; i < this.size; i++)

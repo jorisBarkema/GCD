@@ -16,11 +16,9 @@ namespace GCD
 
         public override void verify(BigInteger p, BigInteger q, BigInteger r, BigInteger s, BigInteger t)
         {
-            //Console.WriteLine("p * s + q * t: " + (p * s + q * t) + ", r: " + r);
             if (p * s + q * t != r)
             {
                 this.GCD.compute(p, q, true);
-                //throw new Exception("Wrong result from the BezoutVerifier");
                 Console.WriteLine("Wrong result from the BezoutVerifier");
                 Console.WriteLine("p: " + p);
                 Console.WriteLine("q: " + q);
@@ -29,6 +27,7 @@ namespace GCD
                 Console.WriteLine("s: " + s);
                 Console.WriteLine("t: " + t);
                 Console.WriteLine("p * s + q * t: " + p * s + q * t);
+                Console.ReadLine();
             }
         }
     }

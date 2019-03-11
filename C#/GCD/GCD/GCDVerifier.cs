@@ -21,9 +21,10 @@ namespace GCD
 
         public override void verify(BigInteger p, BigInteger q, BigInteger r, BigInteger s, BigInteger t)
         {
-            if (r == 0)
+            if (r == 0 && p != 0 && q != 0)
             {
-                Console.WriteLine("Result is 0.");
+                Console.WriteLine("Result is 0 when it should not be.");
+                Console.ReadLine();
                 return;
             }
 
@@ -32,7 +33,7 @@ namespace GCD
             {
                 Console.WriteLine("Result               : " + r);
                 Console.WriteLine("Result of p/r and q/r: " + vres);
-                throw new Exception("Wrong result from the GCDVerifier");
+                Console.ReadLine();
             }
         }
     }
