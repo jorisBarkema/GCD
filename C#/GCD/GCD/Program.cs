@@ -31,11 +31,22 @@ namespace GCD
 
             //Utils.PerformanceTest();
 
-            for (int i = 0; i < 5; i++) builtInGCDTest.Perform();
-            for (int i = 0; i < 5; i++) extSteinTest.Perform();
-            //for (int i = 0; i < 3; i++) euclidTest.Perform();
-            //for (int i = 0; i < 3; i++) extEuclidTest.Perform();
-            for (int i = 0; i < 5; i++) steinTest.Perform();
+            for(int t = 1;t <= 30; t++)
+            {
+                euclidTest.BitSize = 1000 * t;
+                extEuclidTest.BitSize = 1000 * t;
+                steinTest.BitSize = 1000 * t;
+                extSteinTest.BitSize = 1000 * t;
+                builtInGCDTest.BitSize = 1000 * t;
+                
+                builtInGCDTest.PerformSeveral(10);
+                extSteinTest.PerformSeveral(10);
+                euclidTest.PerformSeveral(10);
+                extEuclidTest.PerformSeveral(10);
+                steinTest.PerformSeveral(10);
+            }
+
+            
 
             Console.WriteLine("\nfinished");
             Console.ReadLine();

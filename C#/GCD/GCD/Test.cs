@@ -16,17 +16,34 @@ namespace GCD
         private int size;
         private BigInteger[][] values;
         private BigInteger[][] results;
+        private int bitSize;
 
-        public Test(GCD gcd, Verifier verifier, int size)
+        public int BitSize
+        {
+            set
+            {
+                this.bitSize = value;
+            }
+        }
+
+        public Test(GCD gcd, Verifier verifier, int size, int bitSize = 10000)
         {
             this.GCD = gcd;
             this.Verifier = verifier;
             this.size = size;
-
+            this.bitSize = 10000;
             this.NewValues();
         }
 
-        public void Perform(bool newvalues = true, bool debug = false)
+        public void PerformSeveral(int times, bool newvalues = true, bool debug = false)
+        {
+            this.Perform(true, newvalues, debug);
+            Console.WriteLine(this.GCD.Name + ", " + this.bitSize + " bits (ms)");
+            for (int i = 0; i < times; i++) this.Perform(false, newvalues, debug);
+            Console.WriteLine();
+        }
+
+        public void Perform(bool warmup = false, bool newvalues = true, bool debug = false)
         {
             Stopwatch stopwatch = new Stopwatch();
 
@@ -48,7 +65,7 @@ namespace GCD
             stopwatch.Stop();
 
             long elapsedTime = stopwatch.ElapsedMilliseconds;
-            Console.WriteLine(this.GCD.Name + ": " + elapsedTime + " ms");
+            if (!warmup) Console.WriteLine(elapsedTime);
 
             this.Verify();
             if (newvalues) this.NewValues();
@@ -67,8 +84,8 @@ namespace GCD
             for (int i = 0; i < this.values.Length; i++)
             {
                 this.values[i] = new BigInteger[2];
-                this.values[i][0] = Utils.CreateBigInteger(10000);
-                this.values[i][1] = Utils.CreateBigInteger(10000);
+                this.values[i][0] = Utils.CreateBigInteger(this.bitSize);
+                this.values[i][1] = Utils.CreateBigInteger(this.bitSize);
             }
         }
         
