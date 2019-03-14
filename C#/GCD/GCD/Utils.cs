@@ -22,14 +22,17 @@ namespace GCD
 
             for (int t = 1; t <= 10; t++)
             {
-                Console.WriteLine("Times for " + 1000 * t + " with " + 500 * t + " bits");
+                int size1 = 1000 * t;
+                int size2 = 500 * t;
+
+                Console.WriteLine("Modulo of " + size1 + " with " + size2 + " bits");
                 for (int k = 0; k < 10; k++)
                 {
                     // setup and warm up
-                    Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[1000];
+                    Tuple<BigInteger, BigInteger>[] testValues = new Tuple<BigInteger, BigInteger>[100];
                     for (int i = 0; i < testValues.Length; i++)
                     {
-                        testValues[i] = Tuple.Create(Utils.CreateBigInteger(1000 * t), Utils.CreateBigInteger(500 * t));
+                        testValues[i] = Tuple.Create(Utils.CreateBigInteger(size1), Utils.CreateBigInteger(size2));
                     }
 
                     BigInteger x = testValues[0].Item1 % testValues[0].Item2;
@@ -42,6 +45,7 @@ namespace GCD
                     GC.Collect();
 
                     watch.Start();
+                    // do it 100 times for clock inaccuracies
                     for (int i = 0; i < 100; i++)
                     {
                         for (int j = 0; j < testValues.Length; j++)
@@ -51,7 +55,7 @@ namespace GCD
                         }
                     }
                     watch.Stop();
-                    Console.WriteLine(" Time Elapsed {0} s", watch.Elapsed.TotalSeconds);
+                    Console.WriteLine(watch.ElapsedMilliseconds);
                 }
             }
         }

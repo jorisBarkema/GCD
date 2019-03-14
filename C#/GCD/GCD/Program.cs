@@ -29,7 +29,7 @@ namespace GCD
 
             //for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
-            //Utils.PerformanceTest();
+            Utils.PerformanceTest();
 
             for(int t = 1;t <= 30; t++)
             {

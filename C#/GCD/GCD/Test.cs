@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GCD
@@ -45,6 +46,10 @@ namespace GCD
 
         public void Perform(bool warmup = false, bool newvalues = true, bool debug = false)
         {
+            //Run at highest priority to minimize fluctuations caused by other processes/threads
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+
             Stopwatch stopwatch = new Stopwatch();
 
             // warm up
