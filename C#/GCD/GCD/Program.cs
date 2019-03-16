@@ -29,9 +29,9 @@ namespace GCD
 
             //for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
-            Utils.PerformanceTest();
-
-            for(int t = 1;t <= 30; t++)
+            //Utils.PerformanceTest();
+            /*
+            for(int t = 25;t <= 30; t++)
             {
                 euclidTest.BitSize = 1000 * t;
                 extEuclidTest.BitSize = 1000 * t;
@@ -45,9 +45,16 @@ namespace GCD
                 extEuclidTest.PerformSeveral(10);
                 steinTest.PerformSeveral(10);
             }
+            */
 
-            
+            int bitsize = 13;
 
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(Utils.CreateBigInteger(bitsize));
+            }
+
+            Console.WriteLine("Math.Pow(2, "+ bitsize + "): " + Math.Pow(2, bitsize) + " 1 << 8 - 1: " + ((1 << bitsize) - 1));
             Console.WriteLine("\nfinished");
             Console.ReadLine();
         }

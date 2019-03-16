@@ -23,7 +23,7 @@ namespace GCD
             for (int t = 1; t <= 10; t++)
             {
                 int size1 = 1000 * t;
-                int size2 = 500 * t;
+                int size2 = 1000 * t;
 
                 Console.WriteLine("Modulo of " + size1 + " with " + size2 + " bits");
                 for (int k = 0; k < 10; k++)
@@ -68,9 +68,23 @@ namespace GCD
         public static BigInteger CreateBigInteger(int bits = 2048)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
-            byte[] bytes = new byte[bits / 8];
+            byte[] bytes = null;
+            bool rest = false;
+
+            if (bits % 8 == 0) bytes = new byte[bits / 8];
+            else
+            {
+                bytes = new byte[bits / 8 + 1];
+                rest = true;
+            }
 
             provider.GetBytes(bytes);
+
+            if (rest && bytes.Length > 0)
+            {
+                bytes[bytes.Length - 1] >>= (8 - (byte)(bits % 8));
+            }
+
             BigInteger b = new BigInteger(bytes);
             if (b < 0) b *= -1;
             if (b == 0) b = 1;
