@@ -37,13 +37,29 @@ namespace GCD
                 if (q == 0) return dict;
                 if (p > q)
                 {
+                    if (dict.ContainsKey(p / q))
+                    {
+                        dict[p / q] += 1;
+                    }
+                    else
+                    {
+                        dict.Add(p / q, 1);
+                    }
+
                     p = p % q;
-                    dict[p / q] += 1;
                 }
                 else
                 {
+                    if (dict.ContainsKey(q / p))
+                    {
+                        dict[q / p] += 1;
+                    }
+                    else
+                    {
+                        dict.Add(q / p, 1);
+                    }
+
                     q = q % p;
-                    dict[q / p] += 1;
                 }
             }
 

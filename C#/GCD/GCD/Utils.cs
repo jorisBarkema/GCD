@@ -22,8 +22,8 @@ namespace GCD
 
             for (int t = 1; t <= 10; t++)
             {
-                int size1 = 1000 * t;
-                int size2 = 1000 * t;
+                int size1 = 10000;
+                int size2 = 9900 + 10 * t;
 
                 Console.WriteLine("Modulo of " + size1 + " with " + size2 + " bits");
                 for (int k = 0; k < 10; k++)
@@ -45,8 +45,8 @@ namespace GCD
                     GC.Collect();
 
                     watch.Start();
-                    // do it 100 times for clock inaccuracies
-                    for (int i = 0; i < 100; i++)
+                    // do it 1.000 times for clock inaccuracies
+                    for (int i = 0; i < 1000; i++)
                     {
                         for (int j = 0; j < testValues.Length; j++)
                         {
@@ -60,6 +60,33 @@ namespace GCD
             }
         }
 
+        public static void CalculateFractions()
+        {
+            Euclid euc = new Euclid();
+            Dictionary<BigInteger, int> dict = new Dictionary<BigInteger, int>();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Dictionary<BigInteger, int> r = euc.computeFractions(Utils.CreateBigInteger(10000), Utils.CreateBigInteger(10000));
+                foreach(KeyValuePair<BigInteger, int> kvp in r)
+                {
+                    if (kvp.Key == null) continue;
+                    if (dict.ContainsKey(kvp.Key))
+                    {
+                        dict[kvp.Key] += kvp.Value;
+                    } else
+                    {
+                        dict.Add(kvp.Key, kvp.Value);
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<BigInteger, int> kvp in dict)
+            {
+                Console.WriteLine("{0};{1}", kvp.Key, kvp.Value);
+            }
+
+        }
         /// <summary>
         /// will round the bits number to multiple of 8.
         /// </summary>
