@@ -25,7 +25,7 @@ namespace GCD
                 int size1 = 10000;
                 int size2 = 9900 + 10 * t;
 
-                Console.WriteLine("Modulo of " + size1 + " with " + size2 + " bits");
+                Console.WriteLine("Division of " + size1 + " with " + size2 + " bits");
                 for (int k = 0; k < 10; k++)
                 {
                     // setup and warm up
@@ -35,7 +35,7 @@ namespace GCD
                         testValues[i] = Tuple.Create(Utils.CreateBigInteger(size1), Utils.CreateBigInteger(size2));
                     }
 
-                    BigInteger x = testValues[0].Item1 % testValues[0].Item2;
+                    BigInteger x = testValues[0].Item1 / testValues[0].Item2;
 
                     var watch = new Stopwatch();
 
@@ -50,7 +50,7 @@ namespace GCD
                     {
                         for (int j = 0; j < testValues.Length; j++)
                         {
-                            x = testValues[j].Item1 % testValues[j].Item2;
+                            x = testValues[j].Item1 / testValues[j].Item2;
                             //Console.WriteLine("tested " + i);
                         }
                     }

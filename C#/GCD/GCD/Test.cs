@@ -72,7 +72,7 @@ namespace GCD
             long elapsedTime = stopwatch.ElapsedMilliseconds;
             if (!warmup) Console.WriteLine(elapsedTime);
 
-            this.Verify();
+            //this.Verify();
             if (newvalues) this.NewValues();
         }
 

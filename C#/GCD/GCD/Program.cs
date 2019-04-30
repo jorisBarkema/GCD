@@ -29,7 +29,7 @@ namespace GCD
 
             //for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
-            Utils.CalculateFractions();
+            //Utils.CalculateFractions();
 
             //Utils.PerformanceTest();
             /*
@@ -48,6 +48,42 @@ namespace GCD
                 steinTest.PerformSeveral(10);
             }
             */
+            
+            for (int t = 11; t <= 30; t++)
+            {
+                euclidTest.BitSize = 1000 * t;
+                steinTest.BitSize = 1000 * t;
+                builtInGCDTest.BitSize = 1000 * t;
+
+                builtInGCDTest.PerformSeveral(10);
+                euclidTest.PerformSeveral(10);
+                steinTest.PerformSeveral(10);
+            }
+            
+
+            //Utils.PerformanceTest();
+            
+            builtInGCDTest.BitSize = 10000;
+            builtInGCDTest.PerformSeveral(10);
+
+            builtInGCDTest.BitSize = 20000;
+            builtInGCDTest.PerformSeveral(10);
+
+            builtInGCDTest.BitSize = 40000;
+            builtInGCDTest.PerformSeveral(10);
+
+            builtInGCDTest.BitSize = 80000;
+            builtInGCDTest.PerformSeveral(10);
+
+            builtInGCDTest.BitSize = 160000;
+            builtInGCDTest.PerformSeveral(10);
+            
+            builtInGCDTest.BitSize = 320000;
+            builtInGCDTest.PerformSeveral(10);
+
+            builtInGCDTest.BitSize = 640000;
+            builtInGCDTest.PerformSeveral(10);
+
             Console.WriteLine("\nfinished");
             Console.ReadLine();
         }
