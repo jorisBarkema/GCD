@@ -28,11 +28,11 @@ namespace GCD
                 return;
             }
 
-            BigInteger vres = this.GCD.compute(p / r, q / r)[0];
-            if (vres != 1)
+            BigInteger vres = this.GCD.compute(p, q)[0];
+            if (vres != r)
             {
-                Console.WriteLine("Result               : " + r);
-                Console.WriteLine("Result of p/r and q/r: " + vres);
+                Console.WriteLine("Result           : " + r);
+                Console.WriteLine("Result of builtin: " + vres);
                 Console.ReadLine();
             }
         }

@@ -21,11 +21,11 @@ namespace GCD
             BuiltInGCD builtInGCD = new BuiltInGCD();
 
             // So far Euclid is fastest, so use that for the GCDVerifier.
-            Test euclidTest = new Test(euclid, new GCDVerifier(euclid), 100);
-            Test extEuclidTest = new Test(extEuclid, new BezoutVerifier(euclid), 100);
-            Test steinTest = new Test(stein, new GCDVerifier(euclid), 100);
-            Test extSteinTest = new Test(extStein, new BezoutVerifier(euclid), 100);
-            Test builtInGCDTest = new Test(builtInGCD, new GCDVerifier(euclid), 100);
+            Test euclidTest = new Test(euclid, new GCDVerifier(builtInGCD), 100);
+            Test extEuclidTest = new Test(extEuclid, new BezoutVerifier(builtInGCD), 100);
+            Test steinTest = new Test(stein, new GCDVerifier(builtInGCD), 100);
+            Test extSteinTest = new Test(extStein, new BezoutVerifier(builtInGCD), 100);
+            Test builtInGCDTest = new Test(builtInGCD, new GCDVerifier(builtInGCD), 100);
 
             //for (int i = 0; i < 20; i++) Console.WriteLine(Utils.CreateBigInteger(100));
 
